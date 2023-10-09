@@ -72,7 +72,7 @@ export default function NewsPage({ news }) {
         <CssBaseline />
         <Container maxWidth="sm">
           <Typography variant="h1" gutterBottom>
-            ryokun Lab.
+            ryokun Lab
             <ScienceIcon fontSize="large" />
           </Typography>
           <Box sx={{ width: "100%" }}>
