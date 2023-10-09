@@ -146,7 +146,7 @@ export default function NewsPage({ news }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/news?limit=1000");
+  const res = await fetch(`${process.env.BASE_URL}/api/news?limit=1000`);
   const news = await res.json();
 
   return {
