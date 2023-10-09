@@ -116,7 +116,6 @@ export default function NewsPage({ news }) {
                           <Chip
                             label={data}
                             key={index}
-                            variant="outlined"
                             color="info"
                           />
                         ))}
