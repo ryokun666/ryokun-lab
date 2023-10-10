@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { parseISO, format } from "date-fns";
 import Head from "next/head";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -48,6 +49,12 @@ const initialTagStates = tagData.reduce((acc, tag) => {
   acc[key] = false;
   return acc;
 }, {});
+
+// 日付変換
+function formatDate(isoDateString) {
+  const date = parseISO(isoDateString);
+  return format(date, "yyyy/MM/dd HH:mm");
+}
 
 export default function NewsPage({ news }) {
   // タグの状態を管理するstateを一つにまとめる
@@ -113,11 +120,7 @@ export default function NewsPage({ news }) {
                     <CardContent>
                       <Stack direction="row" spacing={1} mb={2}>
                         {item.tag.map((data, index) => (
-                          <Chip
-                            label={data}
-                            key={index}
-                            color="info"
-                          />
+                          <Chip label={data} key={index} color="info" />
                         ))}
                       </Stack>
                       <Typography sx={{ fontSize: 17 }} gutterBottom>
@@ -125,7 +128,7 @@ export default function NewsPage({ news }) {
                       </Typography>
                       <Typography variant="h5" component="div"></Typography>
                       <Typography color="text.secondary">
-                        {item.created_at}
+                        {formatDate(item.created_at)}
                       </Typography>
                     </CardContent>
                     <CardActions>
